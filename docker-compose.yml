@@ -1,0 +1,31 @@
+version: "3.8"
+
+services:
+  spark-calc-ss:
+    image: spark-calc-ss:latest
+    deploy:
+      replicas: 1
+      placement:
+        constraints: [node.labels.type == app]
+      labels:
+        - traefik.enable=true
+        - traefik.http.routers.spark-calc-ss.entrypoints=https
+        - traefik.docker.network=traefik-public
+        - traefik.constraint-label=traefik-public
+        - traefik.http.routers.spark-calc-ss.rule=Host(`ss.calculators.sparkcloud.studio`) || Host(`ss.calculators.infra.aapse1.sparkcloud.studio`)
+        - traefik.http.services.spark-calc-ss.loadbalancer.server.port=5000
+        - traefik.http.routers.spark-calc-ss.entrypoints=websecure
+        - traefik.http.routers.spark-calc-ss.tls=true
+        - traefik.http.routers.spark-calc-ss.tls.certresolver=lets-encrypt
+    networks:
+      - traefik-public
+      - monitoring
+    volumes:
+      - /mnt/gluster_docker_volumes/spark-calc-ss/static:/app/static
+      - /mnt/gluster_docker_volumes/spark-calc-ss/templates:/app/templates
+
+networks:
+  traefik-public:
+    external: true
+  monitoring:
+    external: true
