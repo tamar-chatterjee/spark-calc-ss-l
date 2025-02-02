@@ -249,14 +249,18 @@
             }
 
             .results table {
-                width: 100%;
-                max-width: 100%;
-                white-space: nowrap;
+                width: 100% !important;
+                max-width: 100% !important;
+                table-layout: fixed;
+                word-wrap: break-word;
             }
 
             .results table th, 
             .results table td {
                 text-align: center;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
             }
         }
 
