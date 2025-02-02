@@ -243,6 +243,32 @@
                 width: 100%;
             }
         }
+        @media (max-width: 600px) {
+            .results table {
+                display: block;
+                overflow-x: auto;
+                white-space: nowrap;
+            }
+
+            .results table thead, 
+            .results table tbody, 
+            .results table tr, 
+            .results table th, 
+            .results table td {
+                display: inline-block;
+            }
+
+            .results table tr {
+                display: flex;
+                flex-wrap: nowrap;
+            }
+
+            .results table th, 
+            .results table td {
+                text-align: left;
+                flex: 1;
+            }
+        }
     </style>
 </head>
 <body>
