@@ -244,21 +244,20 @@
             }
         }
         @media (max-width: 600px) {
+
+            .results {
+                overflow-x: auto;
+                padding: 0;
+            }
+
             .results table {
                 display: table;
-                overflow-x: auto;
                 white-space: nowrap;
                 width: 100%;
             }
 
-            .results table thead, 
-            .results table tbody {
-                display: table-row-group;
-            }
-
             .results table th, 
             .results table td {
-                display: table-cell;
                 text-align: center;
             }
         }
