@@ -17,11 +17,11 @@ def calculate():
     data_egress_gb = data_egress_tb * 1024
 
 
-    spark_base_cost_per_gb = 0.013 * usage_duration  
+    spark_base_cost_per_gb = 0.015 * usage_duration  
     spark_base_cost = spark_base_cost_per_gb * storage_size_gb  
 
     if storage_size_tb > 0.1:
-        max_discount = 0.65  
+        max_discount = 0.35  
         discount_ramp_start = 0.1  
         discount_ramp_end = 2.0  
 
@@ -97,4 +97,4 @@ def calculate():
     })
 
 if __name__ == '__main__':
-    app.run(debug=True, host='0.0.0.0', port=5000)
+    app.run(debug=True, host='0.0.0.0', port=5005)
